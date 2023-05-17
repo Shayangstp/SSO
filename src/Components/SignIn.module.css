@@ -1,0 +1,46 @@
+@import "https://fonts.googleapis.com/css?family=Roboto:400&display=swap";
+
+:root {
+  --google-blue: #4285f4;
+  --google-red: #ea4335;
+  --google-yellow: #fbbc05;
+  --google-green: #34a853;
+}
+
+.signUplink {
+  text-decoration: none;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.signUpText {
+  top: 155px;
+  font-size: 12px;
+  font-weight: bold;
+  color: #575555;
+  text-decoration: none;
+}
+
+.forgetpass {
+  margin-top: 8px;
+  margin-bottom: 20px;
+  font-size: 12px;
+  text-decoration: none;
+  font-family: "Roboto", sans-serif;
+  font-weight: bold;
+}
+
+.btnGoogle {
+  margin: 16px 0;
+  font-family: "Roboto", sans-serif;
+}
+
+/* .googleIcon {
+  color: linear-gradient(
+    to right,
+    var(--google-blue),
+    var(--google-red),
+    var(--google-yellow),
+    var(--google-green)
+  );
+} */

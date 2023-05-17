@@ -1,18 +1,33 @@
 import React, { useState } from "react";
 import TextField from "@mui/material/TextField";
-import { IconButton, InputAdornment } from "@mui/material";
-import Button from "@material-ui/core/Button";
-import Box from "@mui/material/Box";
+import { IconButton, InputAdornment, ThemeProvider } from "@mui/material";
+import { Button, Box, Typography } from "@material-ui/core";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
+import GoogleIcon from "@mui/icons-material/Google";
+import { Link } from "react-router-dom";
+import classes from "./SignIn.module.css";
+import { createMuiTheme } from "@material-ui/core/styles";
 
-const LoginPage = () => {
+const SignIn = ({ showSignUp, setShowSignUp }) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
 
+  const theme = createMuiTheme({
+    palette: {
+      success: {
+        main: "#00C853",
+      },
+    },
+  });
+
   const handleSubmit = (event) => {
     event.preventDefault();
     // TODO: Handle login logic here
+  };
+
+  const signUpHandler = () => {
+    setShowSignUp(true);
   };
 
   const handleTogglePasswordVisibility = () => {
@@ -27,17 +42,19 @@ const LoginPage = () => {
         position="relative"
         sx={{
           width: 400,
-          height: 400,
+          height: 500,
           justifyContent: "center",
         }}
       >
-        <h1 className="text">Sign in</h1>
-        <p className="text-mute">
+        <Typography variant="h4" fontWeight="bold">
+          Sign in
+        </Typography>
+        <Typography variant="caption" className={classes.signUpText}>
           New to Automation ?{" "}
-          <a href="#" className="link">
+          <Link to="/" className={classes.signUplink} onClick={signUpHandler}>
             Sign up for free
-          </a>
-        </p>
+          </Link>
+        </Typography>
 
         <TextField
           label="Username"
@@ -70,18 +87,29 @@ const LoginPage = () => {
             ),
           }}
         />
-        <a href="#" className="link">
+        <Link to="/" className={classes.forgetpass}>
           Forget password?
-        </a>
-        <Button type="submit" variant="contained" color="primary">
+        </Link>
+        <Button type="submit" variant="contained" color="success">
           Login
         </Button>
-        <Button type="submit" variant="outlined" color="primary">
-          Login
-        </Button>
+        <ThemeProvider theme={theme}>
+          <Button
+            type="submit"
+            variant="outlined"
+            color="error"
+            style={{ margin: "16px 0" }}
+          >
+            <GoogleIcon
+              className={classes.googleIcon}
+              style={{ marginRight: "10px" }}
+            />
+            Continue with your Google account
+          </Button>
+        </ThemeProvider>
       </Box>
     </form>
   );
 };
 
-export default LoginPage;
+export default SignIn;
